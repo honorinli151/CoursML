@@ -1,8 +1,9 @@
 from numpy import *
 import matplotlib.pyplot as plt
+import scipy.linalg
 
 # Load the distance matrix
-D = loadtxt('distanceMatrix.csv', delimiter=',')
+D = loadtxt('d:/MyProjects/CoursML/Lab1/Code/MDS/distanceMatrix.csv', delimiter=',')
 cities = ['Atl','Chi','Den','Hou','LA','Mia','NYC','SF','Sea','WDC']
 nCities = D.shape[0] # Get the size of the matrix
 
@@ -22,10 +23,24 @@ k = 2 # e.g. we want to keep 2 dimensions
 #				representation in variable X
 
 
+D = D.dot(D)
+J = identity(10)-ones((10, 10))/10
+B = -0.5*J.dot(D.dot(J))
+try:
+    U, S, V = linalg.svd(B, full_matrices=True, compute_uv=True)
+except LinAlgError:
+    print("SVD computation does not converge.")
+except:
+    print('Check linalg.svd function')
 
+sigma = diag(S)
+def disntance(k):
+    s = sigma[:k, :k]
+    u = U[:, :k]
+    v = V[:k, :]
+    return u.dot(scipy.linalg.fractional_matrix_power(s, 0.5))
 
-
-
+X = disntance(k)
 
 
 #=================================================================
@@ -42,7 +57,7 @@ for i in range(len(cities)):
 
 # Plot also a US map
 plt.subplot(122)
-im = plt.imread("usamap.png")
+im = plt.imread("d:/MyProjects/CoursML/Lab1/Code/MDS/usamap.png")
 implot = plt.imshow(im,aspect='auto')
 plt.axis('off')
 plt.show()
