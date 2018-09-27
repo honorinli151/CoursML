@@ -3,16 +3,26 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib import rc
 
+"""
+Ref: For expication overall: https://machinelearningmastery.com/singular-value-decomposition-for-machine-learning/
+"""
+
 # Load the "gatlin" image data
-X = loadtxt('gatlin.csv', delimiter=',')
+X = loadtxt('d:/MyProjects/CoursML/Lab1/Code/SVD/gatlin.csv', delimiter=',')
 
 #================= ADD YOUR CODE HERE ====================================
 # Perform SVD decomposition
 ## TODO: Perform SVD on the X matrix
 # Instructions: Perform SVD decomposition of matrix X. Save the 
 #               three factors in variables U, S and V
-#
+# Ref: SVD API  https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.svd.html 
 
+try:
+    U, S, V = linalg.svd(X, full_matrices=True, compute_uv=True)
+except LinAlgError:
+    print("SVD computation does not converge.")
+except:
+    print('Check linalg.svd function')
 
 
 #=========================================================================
@@ -29,10 +39,21 @@ plt.draw()
 # Matrix reconstruction using the top k = [10, 20, 50, 100, 200] singular values
 ## TODO: Create five matrices X10, X20, X50, X100, X200 for each low rank approximation
 ## using the top k = [10, 20, 50, 100, 200] singlular values 
-#
+#  Ref: API mutiplication matrix: https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.dot.html
+#       API create a diag matrix: https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.diag.html
 
+K = [10, 20, 50, 100, 200]
+sigma = diag(S)
 
+def reconstruction(k):
+    s = sigma[:k, :k]
+    u = U[:, :k]
+    v = V[:k, :]
+    return u.dot(s.dot(v))
 
+Stock_S = [] 
+for k in K:
+    Stock_S.append(reconstruction(k))
 
 #=========================================================================
 
@@ -42,11 +63,12 @@ plt.draw()
 # Error of approximation
 ## TODO: Compute and print the error of each low rank approximation of the matrix
 # The Frobenius error can be computed as |X - X_k| / |X|
-#
+# Ref: Frobenius error API https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.linalg.norm.html
 
-
-
-
+errors = [] 
+for x in Stock_S:
+    errors.append(linalg.norm(subtract(X, x), ord=None))
+print("The errors are: \n "+"K: "+str(K)[1:-1]+'\n'+'E: '+str(errors))
 
 #=========================================================================
 
@@ -56,10 +78,12 @@ plt.draw()
 # Create a figure with 6 subfigures
 plt.figure(2)
 
+X10, X20, X50, X100, X200 = Stock_S
+
 # Rank 10 approximation
 plt.subplot(321)
-plt.imshow(X5,cmap = cm.Greys_r)
-plt.title('Best rank' + str(5) + ' approximation')
+plt.imshow(X10,cmap = cm.Greys_r)
+plt.title('Best rank' + str(10) + ' approximation')
 plt.axis('off')
 
 # Rank 20 approximation
@@ -99,8 +123,11 @@ plt.draw()
 # Plot the singular values of the original matrix
 ## TODO: Plot the singular values of X versus their rank k
 
-
-
+plt.figure(3)
+plt.plot(list(range(len(S))), S)
+plt.xlabel('Rank')
+plt.ylabel('Singular Value')
+plt.show()
 
 #=========================================================================
 

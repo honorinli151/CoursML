@@ -9,7 +9,7 @@ import csv
 my_data = genfromtxt('wine_data.csv', delimiter=',')
 data = my_data[:,1:]
 target= my_data[:,0] # Class of each instance (1, 2 or 3)
-print "Size of the data (rows, #attributes) ", data.shape
+print("Size of the data (rows, #attributes) "), data.shape
 
 
 # Draw the data in 3/13 dimensions (Hint: experiment with different combinations of dimensions)
