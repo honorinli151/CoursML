@@ -1,11 +1,27 @@
-from numpy import *
-import matplotlib.pyplot as plt
-import matplotlib.cm as cm
-from matplotlib import rc
+'''
+File: d:\MyProjects\CoursML\Lab1\Code\SVD\my_svd.py
+Project: d:\MyProjects\CoursML\Lab1\Code\SVD
+Created Date: Thursday September 27th 2018
+Author: Chenle Li
+-----
+Last Modified: 2018-09-27 09:31:57
+Modified By: Chenle Li at <chenle.li@student.ecp.fr>
+-----
+Copyright (c) 2018 Chenle Li
+-----
+HISTORY:
+Date               	  By     	Comments
+-------------------	---------	---------------------------------------------------------
+'''
 
 """
 Ref: For expication overall: https://machinelearningmastery.com/singular-value-decomposition-for-machine-learning/
 """
+
+from numpy import *
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+from matplotlib import rc
 
 # Load the "gatlin" image data
 X = loadtxt('d:/MyProjects/CoursML/Lab1/Code/SVD/gatlin.csv', delimiter=',')
