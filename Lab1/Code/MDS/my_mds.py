@@ -1,3 +1,19 @@
+'''
+File: /Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/MDS/my_mds.py
+Project: /Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/MDS
+Created Date: Thursday September 27th 2018
+Author: Chenle Li
+-----
+Last Modified: 2018-09-28 11:29:22
+Modified By: Chenle Li at <chenle.li@student.ecp.fr>
+-----
+Copyright (c) 2018 Chenle Li
+-----
+HISTORY:
+Date               	  By     	Comments
+-------------------	---------	---------------------------------------------------------
+'''
+
 from numpy import *
 import matplotlib.pyplot as plt
 import scipy.linalg
