@@ -1,3 +1,19 @@
+'''
+File: /Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/PCA/my_pca.py
+Project: /Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/PCA
+Created Date: Thursday September 27th 2018
+Author: Chenle Li
+-----
+Last Modified: 2018-09-28 11:29:45
+Modified By: Chenle Li at <chenle.li@student.ecp.fr>
+-----
+Copyright (c) 2018 Chenle Li
+-----
+HISTORY:
+Date               	  By     	Comments
+-------------------	---------	---------------------------------------------------------
+'''
+
 from numpy import *
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -44,7 +60,7 @@ print("Size of the W (rows, #attributes) ", W.shape)
 w, v = linalg.eig(W)
 print("Size of the v  (rows, #attributes) ", v.shape)
 
-v.shape
+
 idx = argsort(w)
 
 ## newData2
