@@ -4,7 +4,7 @@ Project: /Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/MDS
 Created Date: Thursday September 27th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-09-28 11:29:22
+Last Modified: 2018-10-12 12:39:40
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -19,10 +19,10 @@ import matplotlib.pyplot as plt
 import scipy.linalg
 
 # Load the distance matrix
-D = loadtxt('d:/MyProjects/CoursML/Lab1/Code/MDS/distanceMatrix.csv', delimiter=',')
+D = loadtxt('/Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/MDS/distanceMatrix.csv', delimiter=',')
 cities = ['Atl','Chi','Den','Hou','LA','Mia','NYC','SF','Sea','WDC']
 nCities = D.shape[0] # Get the size of the matrix
-
+print(nCities)
 
 k = 2 # e.g. we want to keep 2 dimensions
 
@@ -39,7 +39,7 @@ k = 2 # e.g. we want to keep 2 dimensions
 #				representation in variable X
 
 
-D = D.dot(D)
+D = pow(D, 2)
 J = identity(10)-ones((10, 10))/10
 B = -0.5*J.dot(D.dot(J))
 try:
@@ -73,7 +73,7 @@ for i in range(len(cities)):
 
 # Plot also a US map
 plt.subplot(122)
-im = plt.imread("d:/MyProjects/CoursML/Lab1/Code/MDS/usamap.png")
+im = plt.imread("/Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/MDS/usamap.png")
 implot = plt.imshow(im,aspect='auto')
 plt.axis('off')
 plt.show()

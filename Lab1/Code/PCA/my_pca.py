@@ -4,7 +4,10 @@ Project: /Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/PCA
 Created Date: Thursday September 27th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-10-01 11:35:28
+
+=======
+Last Modified: 2018-10-12 03:27:09
+>>>>>>> ad8d3804ec9a614e2a090df2e53ea183448b6b10
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
