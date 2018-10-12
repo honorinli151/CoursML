@@ -14,12 +14,13 @@ def computeCost(theta, X, y):
     #               that is described by theta (see the assignment 
     #				for more details).
 
-	test = [y[i]*log(product_theta_x(theta, X, i))+(1-y[i])*log(1-product_theta_x(theta, X, i)) for i in range(m)]
-	J = (-1/m)*sum(test)
-       
+	# test = [y[i]*log(product_theta_x(theta, X, i))+(1-y[i])*log(1-product_theta_x(theta, X, i)) for i in range(m)]
+	# J = (-1/m)*sum(test)
+	J = (-1/m)*(y.T.dot(log(sigmoid(X.dot(theta))))+ transpose(1-y).dot(log(1-sigmoid(X.dot(theta)))))
+	print('J'+str(J))
+	print("thetab"+str(theta))
     # =============================================================
-	
 	return J
-
+	
 def product_theta_x(theta, X, i):
-	return sigmoid(pow(theta, i).dot(X.T))
+	return sigmoid(sum(X[i, :].dot(theta)))
