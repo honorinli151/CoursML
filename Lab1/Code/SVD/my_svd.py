@@ -4,7 +4,7 @@ Project: d:\MyProjects\CoursML\Lab1\Code\SVD
 Created Date: Thursday September 27th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-09-27 09:31:57
+Last Modified: 2018-10-01 11:36:06
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -12,6 +12,8 @@ Copyright (c) 2018 Chenle Li
 HISTORY:
 Date               	  By     	Comments
 -------------------	---------	---------------------------------------------------------
+
+
 '''
 
 """
@@ -24,7 +26,7 @@ import matplotlib.cm as cm
 from matplotlib import rc
 
 # Load the "gatlin" image data
-X = loadtxt('d:/MyProjects/CoursML/Lab1/Code/SVD/gatlin.csv', delimiter=',')
+X = loadtxt('/Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/SVD/gatlin.csv', delimiter=',')
 
 #================= ADD YOUR CODE HERE ====================================
 # Perform SVD decomposition

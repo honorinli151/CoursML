@@ -4,7 +4,7 @@ Project: /Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/PCA
 Created Date: Thursday September 27th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-09-28 04:58:40
+Last Modified: 2018-10-01 11:35:28
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -12,6 +12,7 @@ Copyright (c) 2018 Chenle Li
 HISTORY:
 Date               	  By     	Comments
 -------------------	---------	---------------------------------------------------------
+2018-09-01 11:34:11	Chenle Li	Normalization added, clusters appeared.
 '''
 
 from numpy import *
@@ -20,9 +21,10 @@ from mpl_toolkits.mplot3d import Axes3D
 import pylab
 from numpy import genfromtxt
 import csv
+from sklearn.preprocessing import StandardScaler
 
 # Load the data set (wine). Variable data stores the final data (178 x 13)
-my_data = genfromtxt('d:/MyProjects/CoursML/Lab1/Code/PCA/wine_data.csv', delimiter=',')
+my_data = genfromtxt('/Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/PCA/wine_data.csv', delimiter=',')
 data = my_data[:,1:]
 target= my_data[:,0] # Class of each instance (1, 2 or 3)
 print(target)
@@ -55,14 +57,18 @@ ax1.set_title("Vizualization of the dataset (3 out of 13 dimensions)")
 
 M = mean(data.T, axis=1)
 C = subtract(data, M)
+
+sc = StandardScaler()
+C = sc.fit_transform(C)
 print("Size of the C (rows, #attributes) ", C.shape)
-W = cov(C.T)
+W = cov(C, rowvar=False)
 print("Size of the W (rows, #attributes) ", W.shape)
 w, v = linalg.eig(W)
 print("Size of the v  (rows, #attributes) ", v.shape)
-
+print(w)
 
 idx = argsort(w)
+print(w[idx[-1]])
 
 ## newData2
 
