@@ -1,5 +1,6 @@
 from numpy import *
 from sigmoid import sigmoid
+from computeCost import product_theta_x
 
 def computeGrad(theta, X, y):
 	# Computes the gradient of the cost with respect to
@@ -13,15 +14,13 @@ def computeGrad(theta, X, y):
     # Instructions: Compute the gradient of cost for each theta,
     # as described in the assignment.
     
-	log_theta_x =1/(1+exp(theta.dot(X)))
-	grad = -(1/m)*sum([])
-    
-    
-    
-    
-    
+	 
+	grad = [theta_grad(theta, X, j, y) for j in range(X.shape()[1])]
     
     
     # =============================================================
 	
 	return grad
+
+def theta_grad(theta, X, j, y):
+	return sum([(product_theta_x(theta, X, i)-y[i])*pow(X[j, i]) for i in range(X.shape()[0])])

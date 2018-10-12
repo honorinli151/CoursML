@@ -15,11 +15,9 @@ def predict(theta, X):
 	# ====================== YOUR CODE HERE ======================
     # Instructions: Predict the label of each instance of the
     #				training set.
+	p = theta.dot(X.T)
     
-    
-    p = theta.dot(X)
-    
-    c = [1 for P in p if p>0.5 else 0]
+	c = [1 if P>0.5 else 0 for P in p]
 
     # =============================================================
 	
