@@ -8,7 +8,7 @@ from predict import predict
 # Load the dataset
 # The first two columns contains the exam scores and the third column
 # contains the label.
-data = loadtxt('data1.txt', delimiter=',')
+data = loadtxt('/Users/lichenle/Desktop/MyProject/CoursML/Lab2/logistic/data1.txt', delimiter=',')
  
 X = data[:, 0:2]
 y = data[:, 2]
