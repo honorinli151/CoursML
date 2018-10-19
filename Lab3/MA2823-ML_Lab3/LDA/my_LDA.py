@@ -47,20 +47,23 @@ def my_LDA(X, Y):
     S_B = np.zeros((dim, dim))
     for i,mean_vec in enumerate(mean_vectors):  
         n = X[Y==i+1,:].shape[0]
-        S_B += n * (mean_vec - overall_mean).T.dot(mean_vec - overall_mean)
+        mean_vec = mean_vec.reshape(dim,1) # make column vector
+        overall_mean = overall_mean.reshape(dim,1) # make column vector
+        S_B += n * (mean_vec - overall_mean).dot((mean_vec - overall_mean).T)
     
     print('between-class Scatter Matrix:\n', S_B.shape)
 
     # Solve the eigenvalues problem
     target = np.linalg.inv(S_W)
     print(target.shape)
-    eig_vals, eig_vecs = np.linalg.eig(np.linalg.inv(S_W).dot(S_B))
+    eig_vals, eig_vecs = np.linalg.eig(target)
     print("Eigen Problem Done")
     idx = np.argsort(eig_vals)
-    # print(w[idx[-1]])
+    # print(eig_vals)
+    # print(eig_vals[idx[-1]])
     # Calculate W
     W = np.concatenate(([eig_vecs[:,idx[-1]]], [eig_vecs[:,idx[-2]]]), axis=0)
-    W = W.T
+    W = W.reshape((dim, 2))
     print('W\n', W)
 
     projected_centroid = [mean.T.dot(W) for mean in mean_vectors]

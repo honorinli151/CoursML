@@ -6,7 +6,7 @@ Author: Chenle Li
 -----
 
 =======
-Last Modified: 2018-10-12 03:27:09
+Last Modified: 2018-10-19 04:41:10
 >>>>>>> ad8d3804ec9a614e2a090df2e53ea183448b6b10
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
@@ -27,7 +27,7 @@ import csv
 from sklearn.preprocessing import StandardScaler
 
 # Load the data set (wine). Variable data stores the final data (178 x 13)
-my_data = genfromtxt('/Users/lichenle/Desktop/MyProject/CoursML/Lab1/Code/PCA/wine_data.csv', delimiter=',')
+my_data = genfromtxt('D:\MyProjects\CoursML\Lab1\Code\PCA\wine_data.csv', delimiter=',')
 data = my_data[:,1:]
 target= my_data[:,0] # Class of each instance (1, 2 or 3)
 print(target)

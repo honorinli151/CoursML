@@ -14,20 +14,16 @@ def predict(X, projected_centroid, W):
 
     # Project test data onto the LDA space defined by W
     projected_data  = np.dot(X, W)
-    
+    # print(projected_data.shape)
     # ====================== YOUR CODE HERE ======================
     # Instructions: Fill in the code to implement the classification
     # part of LDA. Follow the steps given in the assigment.
     labels = []
     for row in projected_data:
-        label = 0 
-        distance = 0
-        for i in range(3):
-            temp = np.linalg.norm(projected_centroid[i]-row)
-            if distance>temp:
-                distance = temp
-                label = i
-        labels.append(label)
+        # print(projected_centroid)
+        distances = [sp.spatial.distance.euclidean(row, center) for center in projected_centroid]
+        label = distances.index(min(distances))
+        labels.append(label+1)
     labels = np.array(labels)
     
     
