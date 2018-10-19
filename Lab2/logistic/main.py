@@ -33,7 +33,7 @@ X_new = 0.5*ones((X.shape[0], 3))
 X_new[:, 1:3] = X
 X = X_new
 # X = c_[ones((data.shape[0],1)), X[:,0:2]]
-print(X-X_new)
+# print(X-X_new)
 
 # Initialize fitting parameters
 initial_theta = array([-12, 0.1, 0.1])

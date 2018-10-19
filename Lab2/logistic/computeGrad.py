@@ -17,10 +17,10 @@ def computeGrad(theta, X, y):
 	 
 	# grad = [theta_grad(theta, X, j, y) for j in range(X.shape[1])]
 	grad = (1/m)*((sigmoid(X.dot(theta))-y).T.dot(X))
-	print(grad.shape)
-	print(theta.shape)
-	print(X.shape)
-	print(y.shape)
+	# print(grad.shape)
+	# print(theta.shape)
+	# print(X.shape)
+	# print(y.shape)
     
     # =============================================================
 	
