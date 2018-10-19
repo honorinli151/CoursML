@@ -23,4 +23,4 @@ def computeGrad(theta, X, y):
 	return grad
 
 def theta_grad(theta, X, j, y):
-	return sum([(product_theta_x(theta, X, i)-y[i])*pow(X[j, i]) for i in range(X.shape()[0])])
+	return sum([(product_theta_x(theta, X, i)-y[i])*X[i, j] for i in range(X.shape()[0])])

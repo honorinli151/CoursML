@@ -22,4 +22,4 @@ def computeCost(theta, X, y):
 	return J
 
 def product_theta_x(theta, X, i):
-	return sigmoid(pow(theta, i).dot(X.T))
+	return sigmoid(X[i].dot(theta))
