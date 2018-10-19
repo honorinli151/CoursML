@@ -4,7 +4,7 @@ Project: d:\MyProjects\CoursML\assignment1\MA2823MLAssignment_1\MA2823-ML-Assign
 Created Date: Friday October 19th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-10-19 12:43:02
+Last Modified: 2018-10-19 12:47:00
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -37,10 +37,10 @@ start = timer()
 
 clf = LogisticRegression(random_state=0, solver='lbfgs').fit(X, Y.ravel())
 prediction = clf.predict(X_test)
-print(prediction)
+# print(prediction)
 
 fpr, tpr, thresholds = metrics.roc_curve(Y_test, prediction, pos_label=1)
-print(fpr)
+# print(fpr)
 roc_auc = metrics.auc(fpr, tpr)
 
 end = timer()
@@ -56,7 +56,6 @@ plt.title('LogisticRegression  Classifier ROC')
 plt.plot(fpr, tpr, color='blue', lw=2, label='SVM ROC area = %0.2f' % roc_auc)
 plt.text(0.65, 0.1, 'running time %0.4f s' % running_time)
 plt.legend(loc="lower right")
-plt.show()
 
 
 # Logistic Regression with Feature Selection

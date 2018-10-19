@@ -8,7 +8,7 @@ from my_LDA import my_LDA
 from predict import predict
 
 # Load data (Wine dataset)
-my_data = np.genfromtxt('wine_data.csv', delimiter=',')
+my_data = np.genfromtxt('D:\MyProjects\CoursML\Lab3\MA2823-ML_Lab3\LDA\wine_data.csv', delimiter=',')
 np.random.shuffle(my_data) # shuffle datataset
 trainingData = my_data[:100,1:] # training data
 trainingLabels = my_data[:100,0] # class labels of training data
@@ -30,5 +30,5 @@ counter = 0
 for i in range(predictedLabels.size):
     if predictedLabels[i] == testLabels[i]:
         counter += 1
-print 'Accuracy of LDA: %f' % (counter / float(predictedLabels.size) * 100.0)
+print('Accuracy of LDA: %f' % (counter / float(predictedLabels.size) * 100.0))
 

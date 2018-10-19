@@ -18,12 +18,20 @@ def predict(X, projected_centroid, W):
     # ====================== YOUR CODE HERE ======================
     # Instructions: Fill in the code to implement the classification
     # part of LDA. Follow the steps given in the assigment.
-    
-    
-    
+    labels = []
+    for row in projected_data:
+        label = 0 
+        distance = 0
+        for i in range(3):
+            temp = np.linalg.norm(projected_centroid[i]-row)
+            if distance>temp:
+                distance = temp
+                label = i
+        labels.append(label)
+    labels = np.array(labels)
     
     
     # =============================================================
 
     # Return the predicted labels of the test data X
-    return label
+    return labels
