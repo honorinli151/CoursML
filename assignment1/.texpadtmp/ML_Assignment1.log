@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.13)  19 OCT 2018 14:43
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.13)  19 OCT 2018 14:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1087,53 +1087,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
-
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
-
- []
-
-[3] (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian17.pgf) (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian18.pgf)
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
+[2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
+
+ []
+
+[4] (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian17.pgf) (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian18.pgf)
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
 Missing character: There is no ⊤ in font Georgia Bold/OT:script=latn;language=DFLT;mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--169
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
 
-[4] [5] (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian17.pgf) (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian18.pgf) [6] (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian17.pgf)
-Underfull \hbox (badness 1418) in paragraph at lines 263--263
+[5] [6] (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian17.pgf) (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian18.pgf) [7] [8] (/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian17.pgf)
+Underfull \hbox (badness 1418) in paragraph at lines 265--265
 []\TU/Georgia(0)/bx/n/14.4 IV Linear Regression, Logistic Regression and
  []
 
-(/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian18.pgf)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/pgfornament/vectorian/vectorian18.pgf) [9]
 File: MA2823MLAssignment_1/MA2823-ML-Assignment_1/Roc_Curve.png Graphic file (type QTm)
- <use  "MA2823MLAssignment_1/MA2823-ML-Assignment_1/Roc_Curve.png" > [7]
+ <use  "MA2823MLAssignment_1/MA2823-ML-Assignment_1/Roc_Curve.png" >
 File: MA2823MLAssignment_1/MA2823-ML-Assignment_1/Comparison.png Graphic file (type QTm)
- <use  "MA2823MLAssignment_1/MA2823-ML-Assignment_1/Comparison.png" > [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 297.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 297.
+ <use  "MA2823MLAssignment_1/MA2823-ML-Assignment_1/Comparison.png" > [10] [11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 301.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 301.
  (/Users/lichenle/Desktop/MyProject/CoursML/assignment1/.texpadtmp/ML_Assignment1.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 297.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 297.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 297.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 301.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 301.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 301.
  ) 
 Here is how much of TeX's memory you used:
  29978 strings out of 493005
@@ -1144,4 +1144,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  62i,6n,82p,10374b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/lichenle/Desktop/MyProject/CoursML/assignment1/.texpadtmp/ML_Assignment1.pdf (8 pages).
+Output written on /Users/lichenle/Desktop/MyProject/CoursML/assignment1/.texpadtmp/ML_Assignment1.pdf (11 pages).
