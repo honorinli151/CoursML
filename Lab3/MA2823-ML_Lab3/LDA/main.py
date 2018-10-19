@@ -38,7 +38,16 @@ for i in range(predictedLabels.size):
 print('Accuracy of LDA: %f' % (counter / float(predictedLabels.size) * 100.0))
 
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-clf = LinearDiscriminantAnalysis()
+clf = LinearDiscriminantAnalysis(solver = 'eigen')
+clf.fit(trainingData, trainingLabels)
+test = clf.predict(testData)
+counter = 0
+for i in range(test.size):
+    if test[i] == testLabels[i]:
+        counter += 1
+print('Accuracy of LDA: %f' % (counter / float(test.size) * 100.0))
+
+clf = LinearDiscriminantAnalysis(solver = 'svd')
 clf.fit(trainingData, trainingLabels)
 test = clf.predict(testData)
 counter = 0

@@ -51,6 +51,10 @@ def my_LDA(X, Y):
         overall_mean = overall_mean.reshape(dim,1) # make column vector
         S_B += n * (mean_vec - overall_mean).dot((mean_vec - overall_mean).T)
     
+    # S_T = np.cov(X.T)
+    # S_B = S_T - S_W
+    # print(S_T.shape)
+    # print(S_T - S_B+S_W)
     print('between-class Scatter Matrix:\n', S_B.shape)
 
     # Solve the eigenvalues problem
