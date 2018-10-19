@@ -4,7 +4,7 @@ Project: d:\MyProjects\CoursML\Lab1\Code\SVD
 Created Date: Thursday September 27th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-09-30 07:41:47
+Last Modified: 2018-10-01 11:36:06
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -12,6 +12,8 @@ Copyright (c) 2018 Chenle Li
 HISTORY:
 Date               	  By     	Comments
 -------------------	---------	---------------------------------------------------------
+
+
 '''
 
 """
