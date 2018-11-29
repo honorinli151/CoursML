@@ -4,7 +4,7 @@ Project: /Users/lichenle/Desktop/ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 01:44:55
+Last Modified: 2018-11-29 02:54:38
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -61,11 +61,23 @@ from models import *
 # {% endblock table %}
 
 class featureGenerator():
+    """Class for generating features over dataset with dictionnaies 
+    {feature name: a child class of featureBase() which generate correpondent feature}
     
+    """
+
     def __init__(self, 
                 train_df:pd.DataFrame, 
                 test_df:pd.DataFrame,  
                 features: dict = None):
+                """Initilization
+                
+                Args:
+                    train_df (pd.DataFrame): Train DataSet
+                    test_df (pd.DataFrame): Test Dataset
+                    features (dict, optional): Defaults to None. Dictionary of {feature names: feature()}
+                """
+
 
         self.train_df = train_df.copy()
         self.test_df = test_df.copy()
@@ -74,20 +86,40 @@ class featureGenerator():
         # self.data_df = self.train_df.copy().append(test_df)
 
     def add(self, feature_dict):
+        """add new features with feature names and feature class
+        
+        Args:
+            feature_dict (dict): Dictionary of {feature names: feature()} to be added
+        """
+
         for feature in feature_dict:
             self.features[feature] =  feature_dict[feature]
             self.train_df[feature] = feature_dict[feature].compute(self.train_df.append(self.test_df))[:self.train_df.shape[0]]
 
     def fit(self):
+        """Generate features separately over the train dataset and test dataset.
+        
+        Returns:
+        X_test, X_train: test and train dataset with features generated
+        """
+
         for feature in self.features:
             self.test_df[feature] = self.features[feature].compute(self.train_df.append(self.test_df))[self.train_df.shape[0]:]
         features = list(self.features)
         std_scaler = sklearn.preprocessing.StandardScaler()
         self.train_df[features] = std_scaler.fit_transform(self.train_df[features])
         self.test_df[features] = std_scaler.transform(self.test_df[features])
-        return self.test_df[features].copy(), self.train_df[features].copy()
+        X_test = self.test_df[features].copy()
+        X_train = self.train_df[features].copy()
+        return X_test, X_train
 
 class featureBase():
+    """Parent class for generation one feature
+    
+    Returns:
+        [type]: [description]
+    """
+
 
     def __init__(self, 
                 df,
@@ -97,6 +129,15 @@ class featureBase():
 
     # @staticmethod
     def compute(self, dataframe):
+        """Do the feature generation job, to be overwritten in sub classes
+        
+        Args:
+            dataframe (pd.DataFrame): the dataset to be generated over
+        
+        Returns:
+            (Series): feature column
+        """
+
         # return a Series type of features
         pass
     
@@ -105,25 +146,54 @@ class featureBase():
         baseline(self.name, self.df, Target="Survived")
 
 class sexFeature(featureBase):
+    """Map sex to numbers [man, woman] -> [0, 1]
+    
+    Args:
+        featureBase (class): parent class
+    
+    Returns:
+        Sex: 0, 1 representation of Sex
+    """
 
     def __init__(self, df):
         super().__init__(df, 'Sex')
         
     def compute(self, dataframe):
+
         dataframe[self.name].replace(['male','female'],[0,1],inplace=True)
-        return dataframe[self.name]
+        Sex = dataframe[self.name]
+        return Sex
 
 
 class embarkedFeature(featureBase):
+    """Map [S, C, Q] -> [0, 1, 2]
+    
+    Args:
+        featureBase (class): parent class
+    
+    Returns:
+        Embarked (Series): numerical representation of departure cities
+    """
+
     
     def __init__(self, df):
         super().__init__(df, 'Embarked')
     
     def compute(self, dataframe):
         dataframe[self.name].replace(['S', 'C', 'Q'], [0, 1, 2],inplace=True)
-        return dataframe[self.name]
+        Embarked = dataframe[self.name]
+        return Embarked
 
 class familysizeFeature(featureBase):
+    """Generate family size by SisSp+Parch (somme of number of children/parents/siblings.)
+    
+    Args:
+        featureBase (class): parent class
+    
+    Returns:
+        familysize (Series): number of family members on board
+    """
+
 
     def __init__(self, df):   
         super().__init__(df, "FamilySize")
@@ -133,6 +203,18 @@ class familysizeFeature(featureBase):
         return familysize
 
 class familysurvivalFeature(featureBase):
+    """Generate the survival probabilities of family members based on info of survival
+    in train dataset.
+
+    The exact family members are determined by LastName and Fare.
+    
+    Args:
+        featureBase (class): parent class
+    
+    Returns:
+        family_survival (Series): family survival rate.
+    """
+
 
     def __init__(self, df):
         super().__init__(df, "FamilySurvival")
@@ -176,10 +258,20 @@ class familysurvivalFeature(featureBase):
                             data_df.loc[data_df['PassengerId'] == passID, 'Family_Survival'] = 0
                                 
         print("Number of passenger with family/group survival information: " +str(data_df[data_df['Family_Survival']!=0.5].shape[0]))
-        return data_df["Family_Survival"]
+        family_survival = data_df["Family_Survival"]
+        return family_survival
 
 
 class pclassFeature(featureBase):
+    """Get the raw pclass feature 
+    
+    Args:
+        featureBase (class): parent class
+    
+    Returns:
+        pclass: the raw information of class
+    """
+
 
     def __init__(self, df):
         super().__init__(df, "Pclass")
@@ -187,3 +279,5 @@ class pclassFeature(featureBase):
     def compute(self, dataframe):
         pclass = dataframe["Pclass"]
         return pclass
+
+#%%

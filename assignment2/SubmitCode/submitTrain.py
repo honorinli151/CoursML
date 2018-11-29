@@ -4,7 +4,7 @@ Project: f:\ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 02:10:22
+Last Modified: 2018-11-29 03:02:51
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -52,9 +52,9 @@ from sklearn import feature_selection
 from sklearn import model_selection
 from sklearn import metrics
 from features import *
+from utils import *
 
-
-
+# Load train and test dataset
 train_df = pd.read_csv('/Users/lichenle/Desktop/MyProject/CoursML/assignment2/data/train.csv')
 test_df = pd.read_csv('/Users/lichenle/Desktop/MyProject/CoursML/assignment2/data/test.csv')
 
@@ -65,7 +65,7 @@ print(nas[nas.sum(axis=1) > 0])
 
 
 #%%
-# Missing values
+# Fill in missing values
 
 train_df['Age']=train_df['Age'].fillna(train_df.loc[train_df['Age'].notnull()]['Age'].mean())
 train_df['Cabin'] = train_df['Cabin'].fillna(train_df['Cabin'].value_counts().index[0])
@@ -87,27 +87,31 @@ else:
     print('Nan in the data sets')
     print(nas[nas.sum(axis=1) > 0])
 
+# Define feature dictionnaries, more info refer to features.featureGenerator
 features = {'Sex': sexFeature(train_df), 
             'EmbarkCoded': embarkedFeature(train_df), 
             "FamilySize": familysizeFeature(train_df), 
             "FamilySurvival": familysurvivalFeature(train_df),
             "Pclass": pclassFeature(train_df)}
 
-
+# Generate features over dataset
 featureGen = featureGenerator(train_df, test_df, features = features)
 X_test, X_train = featureGen.fit()
 y_train = train_df["Survived"]
 
+# Train models with the already tuned parameters, refer to the report for more info about tuning process
 clf =  RandomForestClassifier(criterion='gini', max_depth=5, n_estimators=110, oob_score= True, random_state= 0).fit(X_train, y_train)
 test_df["Survived"] = clf.predict(X_test) #0.806
 
+# Save the current model
 save_model(clf)
 
+
+# Generate and save submission .csv for Kaggle
 submission = pd.DataFrame({
         "PassengerId": test_df["PassengerId"],
         "Survived": test_df['Survived']
     })
-
 file = 'titanic_preditedby{}_{}.csv'.format('RF', now)
 submission.to_csv(file, index=False)
 X_test["PassengerId"] = test_df["PassengerId"]

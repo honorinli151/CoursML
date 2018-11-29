@@ -4,7 +4,7 @@ Project: f:\ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-25 09:59:19
+Last Modified: 2018-11-29 02:23:38
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -127,7 +127,6 @@ def autoTuning(X, y):
     cv_split = model_selection.ShuffleSplit(n_splits = 10, test_size = .3, train_size = .6, random_state = 0 )
 
     #http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.VotingClassifier.html
-    #removed models w/o attribute 'predict_proba' required for vote classifier and models with a 1.0 correlation to another model
     vote_est = [
         #Ensemble Methods: http://scikit-learn.org/stable/modules/ensemble.html
         ('ada', ensemble.AdaBoostClassifier()),
