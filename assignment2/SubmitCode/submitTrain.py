@@ -4,7 +4,7 @@ Project: f:\ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 03:02:51
+Last Modified: 2018-11-29 03:19:20
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -60,7 +60,7 @@ test_df = pd.read_csv('/Users/lichenle/Desktop/MyProject/CoursML/assignment2/dat
 
 # Check for missing data & list them 
 nas = pd.concat([train_df.isnull().sum(), test_df.isnull().sum()], axis=1, keys=['Train Dataset', 'Test Dataset']) 
-print('Nan in the data sets')
+print('Missing values in the data sets')
 print(nas[nas.sum(axis=1) > 0])
 
 
@@ -82,7 +82,7 @@ test_df['Fare'] = (test_df['Fare']-test_df['Fare'].min())/(test_df['Fare'].max()
 # Assure no missing values
 nas = pd.concat([train_df.isnull().sum(), test_df.isnull().sum()], axis=1, keys=['Train Dataset', 'Test Dataset']) 
 if nas[nas.sum(axis=1) > 0].empty:
-    print("No missing values.")
+    print("Missing values filled.")
 else:        
     print('Nan in the data sets')
     print(nas[nas.sum(axis=1) > 0])
