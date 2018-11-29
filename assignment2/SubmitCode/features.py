@@ -4,7 +4,7 @@ Project: /Users/lichenle/Desktop/ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 03:08:17
+Last Modified: 2018-11-29 05:20:31
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -67,9 +67,9 @@ class featureGenerator():
     """
 
     def __init__(self, 
-                train_df:pd.DataFrame, 
-                test_df:pd.DataFrame,  
-                features: dict = None):
+                train_df, 
+                test_df,  
+                features = None):
         """Initilization
         
         Args:

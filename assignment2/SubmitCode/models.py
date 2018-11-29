@@ -4,7 +4,7 @@ Project: f:\ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 03:07:58
+Last Modified: 2018-11-29 05:17:33
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -76,7 +76,7 @@ MLA = [
         ]
 
 
-def baseline(features:list, train_df:pd.DataFrame, Target="Survived"):
+def baseline(features, train_df, Target="Survived"):
     
     features.append(Target)
     data1 = train_df.copy()[features]
