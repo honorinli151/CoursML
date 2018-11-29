@@ -4,7 +4,7 @@ Project: /Users/lichenle/Desktop/ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 02:54:38
+Last Modified: 2018-11-29 03:08:17
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -70,14 +70,13 @@ class featureGenerator():
                 train_df:pd.DataFrame, 
                 test_df:pd.DataFrame,  
                 features: dict = None):
-                """Initilization
-                
-                Args:
-                    train_df (pd.DataFrame): Train DataSet
-                    test_df (pd.DataFrame): Test Dataset
-                    features (dict, optional): Defaults to None. Dictionary of {feature names: feature()}
-                """
-
+        """Initilization
+        
+        Args:
+            train_df (pd.DataFrame): Train DataSet
+            test_df (pd.DataFrame): Test Dataset
+            features (dict, optional): Defaults to None. Dictionary of {feature names: feature()}
+        """
 
         self.train_df = train_df.copy()
         self.test_df = test_df.copy()
@@ -144,6 +143,7 @@ class featureBase():
     def runBaseline(self):
         self.df[self.name] = self.compute(self.df)
         baseline(self.name, self.df, Target="Survived")
+        return 0
 
 class sexFeature(featureBase):
     """Map sex to numbers [man, woman] -> [0, 1]
