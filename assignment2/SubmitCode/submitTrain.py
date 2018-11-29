@@ -4,7 +4,7 @@ Project: f:\ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 03:19:20
+Last Modified: 2018-11-29 05:27:54
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -53,6 +53,12 @@ from sklearn import model_selection
 from sklearn import metrics
 from features import *
 from utils import *
+
+
+# Detect python version, must be version 3, the exact version used is 3.6.4
+import sys
+if sys.version_info[0] < 3:
+    raise Exception("Must be using Python 3")
 
 # Load train and test dataset
 train_df = pd.read_csv('/Users/lichenle/Desktop/MyProject/CoursML/assignment2/data/train.csv')
