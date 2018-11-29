@@ -4,7 +4,7 @@ Project: /Users/lichenle/Desktop/ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-25 11:02:00
+Last Modified: 2018-11-29 01:44:55
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -35,7 +35,6 @@ from datetime import datetime
 
 import warnings
 warnings.filterwarnings(action ='ignore')
-from hyperopt import hp, fmin, tpe
 from sklearn.metrics import accuracy_score
 from functools import partial
 from sklearn.ensemble import RandomForestClassifier
