@@ -1,2 +1,8 @@
-assignment2/all/
-assignment2/all.zip
+
+assignment2/*.ipynb_checkpoints
+*.log
+*.csv
+!assignment2/data/*.csv
+assignment2/SubmitCode/__pycache__/
+.vscode/
+!assignment2/SubmitCode/test_ready.csv

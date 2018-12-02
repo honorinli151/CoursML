@@ -4,7 +4,7 @@ Project: /Users/lichenle/Desktop/ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-25 09:04:47
+Last Modified: 2018-11-29 02:24:45
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -15,7 +15,9 @@ Date               	  By     	Comments
 '''
 import pandas as pd
 from datetime import datetime
+import pickle   
 
+# generate submission files for Kaggle
 def submit(test_prediction, label, features, test_df):
 
     now = datetime.now().strftime('%Y%m%d%H%M%S')
@@ -27,3 +29,10 @@ def submit(test_prediction, label, features, test_df):
     
     print('Exported')
 
+
+# save models to ".sav" file
+def save_model(classifier):
+    now = datetime.now().strftime('%Y%m%d%H%M%S')
+    filename = 'finalized_model{}at{}.sav'.format(classifier.__class__.__name__, now)
+    pickle.dump(classifier, open(filename, 'wb'))
+    print('Model saved to {}'.format(filename))

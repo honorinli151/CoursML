@@ -1,0 +1,7 @@
+featexp==0.0.3
+matplotlib==2.2.2
+seaborn==0.9.0
+numpy==1.14.3
+pandas==0.23.4
+scikit_learn==0.20.1
+xgboost==0.81
