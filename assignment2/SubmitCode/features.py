@@ -4,7 +4,7 @@ Project: /Users/lichenle/Desktop/ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 05:20:31
+Last Modified: 2018-12-02 03:20:12
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -269,8 +269,8 @@ class pclassFeature(featureBase):
         featureBase (class): parent class
     
     Returns:
-        pclass: the raw information of class
-    """
+       pclass: the raw information of class
+    """ 
 
 
     def __init__(self, df):
@@ -280,4 +280,44 @@ class pclassFeature(featureBase):
         pclass = dataframe["Pclass"]
         return pclass
 
-#%%
+class titleFeature(featureBase):
+    """Get social status based on title in the name
+    
+    Args:
+        featureBase (class): parent class
+    
+    Returns:
+       title: the title categories based on risk of social status [highrisk, mediumrisk, lowrisk] -> [2, 1, 0]
+    """ 
+
+
+    def __init__(self, df):
+        super().__init__(df, "Title")
+        self.map = {'Mr': 2, 
+                    'Don': 2, 
+                    'Rev': 2, 
+                    'Capt': 2, 
+                    'Jonkheer': 2, 
+                    'Master': 1, 
+                    'Dr': 1, 
+                    'Major': 1, 
+                    'Col': 1, 
+                    'Mrs': 0, 
+                    'Miss': 0, 
+                    'Mme': 0, 
+                    'Ms': 0, 
+                    'Lady': 0, 
+                    'Sir': 0, 
+                    'Mlle': 0, 
+                    'the Countess': 0,
+                    "Dona": 1
+                } 
+    
+    def compute(self, dataframe):
+        dataframe['Title'] = dataframe['Name']
+        get_title = lambda x: re.findall(r",\s(.+?)\.", x)[0]
+        dataframe['Title'] = dataframe['Title'].apply(get_title)
+        dataframe['Title'] = dataframe['Title'].map(self.map)
+        title = dataframe['Title']
+        return title
+

@@ -4,7 +4,7 @@ Project: f:\ML A2
 Created Date: Sunday November 25th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 05:27:54
+Last Modified: 2018-12-02 03:20:54
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -61,8 +61,8 @@ if sys.version_info[0] < 3:
     raise Exception("Must be using Python 3")
 
 # Load train and test dataset
-train_df = pd.read_csv('/Users/lichenle/Desktop/MyProject/CoursML/assignment2/data/train.csv')
-test_df = pd.read_csv('/Users/lichenle/Desktop/MyProject/CoursML/assignment2/data/test.csv')
+train_df = pd.read_csv('D:\MyProjects\CoursML\\assignment2\data\\train.csv')
+test_df = pd.read_csv('D:\MyProjects\CoursML\\assignment2\data\\test.csv')
 
 # Check for missing data & list them 
 nas = pd.concat([train_df.isnull().sum(), test_df.isnull().sum()], axis=1, keys=['Train Dataset', 'Test Dataset']) 
@@ -95,7 +95,7 @@ else:
 
 # Define feature dictionnaries, more info refer to features.featureGenerator
 features = {'Sex': sexFeature(train_df), 
-            'EmbarkCoded': embarkedFeature(train_df), 
+            'Title': titleFeature(train_df), 
             "FamilySize": familysizeFeature(train_df), 
             "FamilySurvival": familysurvivalFeature(train_df),
             "Pclass": pclassFeature(train_df)}
@@ -106,7 +106,7 @@ X_test, X_train = featureGen.fit()
 y_train = train_df["Survived"]
 
 # Train models with the already tuned parameters, refer to the report for more info about tuning process
-clf =  RandomForestClassifier(criterion='gini', max_depth=5, n_estimators=110, oob_score= True, random_state= 0).fit(X_train, y_train)
+clf =  RandomForestClassifier(criterion='gini', max_depth=4, n_estimators=260, oob_score= True, random_state= 0).fit(X_train, y_train)
 test_df["Survived"] = clf.predict(X_test) #0.806
 
 # Save the current model

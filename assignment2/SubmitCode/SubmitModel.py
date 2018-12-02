@@ -4,7 +4,7 @@ Project: /Users/lichenle/Desktop/MyProject/CoursML/assignment2/SubmitCode
 Created Date: Thursday November 29th 2018
 Author: Chenle Li
 -----
-Last Modified: 2018-11-29 03:00:59
+Last Modified: 2018-12-02 03:23:16
 Modified By: Chenle Li at <chenle.li@student.ecp.fr>
 -----
 Copyright (c) 2018 Chenle Li
@@ -19,10 +19,10 @@ from datetime import datetime
 now = datetime.now().strftime('%Y%m%d%H%M%S')
 print("Now is {}".format(now))
 
-submitModelPath = "finalized_modelRandomForestClassifierat20181129134604.sav"
+submitModelPath = "finalized_modelRandomForestClassifierat20181202152115.sav"
 
 features = ['Sex', 
-            'EmbarkCoded', 
+            'Title', 
             "FamilySize", 
             "FamilySurvival",
             "Pclass"]
